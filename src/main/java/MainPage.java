@@ -14,6 +14,7 @@ public class MainPage {
     private By userEmailField = By.xpath("//*[@id=\"user[email]\"]");
     private By userPasswordField = By.xpath("//*[@id=\"user[password]\"]");
     private By signUpForGithubButton = By.xpath("/html/body/div[4]/main/div[1]/div/div/div[2]/div/form/button");
+    private By incorrectUserEmail = By.xpath("/html/body/div[4]/main/div[1]/div/div/div[2]/div/form/dl[2]/dd[2]");
 
     public LoginPage clickSignInLink () {
         driver.findElement(signInLink).click();
@@ -50,6 +51,10 @@ public class MainPage {
         this.typeEmail(email);
         this.typePassword(password);
         return new SignUpPage(driver);
+    }
+
+    public String getIncorrectEmailError () {
+        return driver.findElement(incorrectUserEmail).getText();
     }
 
 }

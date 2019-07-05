@@ -33,22 +33,24 @@ public class MainPageTest {
 
     @Test
     public void registerFailTest() {
-        SignUpPage signUpPage = mainPage.register("testuser", "testemail@yahoo.com", "testpass");
+        SignUpPage signUpPage = mainPage.register("testuser", "testemailcoder@yahoo.com", "testpasscodernew");
+        mainPage.clickSignUpForGithubButton();
         String error = signUpPage.getMainErrorText();
         Assert.assertEquals("There were problems creating your account.", error);
     }
 
     @Test
     public void signUpEmptyUsernameTest(){
-        SignUpPage signUpPage = mainPage.register("", "mail", "pass");
+        SignUpPage signUpPage = mainPage.register("", "testemailcoder@yahoo.com", "testpasscodernew");
+        mainPage.clickSignUpForGithubButton();
         String error = signUpPage.getUsernameErrorText();
-        Assert.assertEquals("Login can't be blank", error);
+        Assert.assertEquals("Username can't be blank", error);
     }
 
     @Test
     public void signUpInvalidEmailTest(){
-        SignUpPage signUpPage = mainPage.register("qeqwe", "qweq", "pass");
-        String error = signUpPage.getEmailErrorText();
+        SignUpPage signUpPage = mainPage.register("testusernewcoder", "qweq", "testpasscodernew");
+        String error = mainPage.getIncorrectEmailError();
         Assert.assertEquals("Email is invalid or already taken", error);
     }
 

@@ -14,7 +14,7 @@ public class SignUpPage {
     private By userNameField = By.xpath("//*[@id=\"user_login\"]");
     private By userEmailField = By.xpath("//*[@id=\"user_email\"]");
     private By userPasswordField = By.xpath("//*[@id=\"user_password\"]");
-    private By mainError = By.xpath(".//*[@id='user_login']/ancestor::dl/preceding-sibling::div[contains(@class, 'flash-error')]");
+    private By mainError = By.xpath("//*[@id=\"signup-form\"]/div[1]");
     private By userNameError = By.xpath("//input[@id='user_login']/ancestor::dd/following-sibling::dd");
     private By emailError = By.xpath(".//*[@id='user_email']/ancestor::dd/following-sibling::dd");
     private By passwordError = By.xpath(".//*[@id='user_password']/ancestor::dd/following-sibling::dd");
@@ -51,14 +51,17 @@ public class SignUpPage {
     }
 
     public String getUsernameErrorText(){
+
         return driver.findElement(userNameError).getText();
     }
 
     public String getPasswrodErrorText(){
+
         return driver.findElement(passwordError).getText();
     }
 
     public String getEmailErrorText(){
+
         return driver.findElement(emailError).getText();
     }
 
