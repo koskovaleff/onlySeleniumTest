@@ -25,14 +25,14 @@ public class SignUpPageTest {
     public void signUpWithShortPass(){
         SignUpPage sp = signUpPage.typeUserPassword("qwe");
         String error = sp.getPasswrodErrorText();
-        Assert.assertEquals("Password is too short (minimum is 7 characters) and needs at least one number", error);
+        Assert.assertEquals("Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter. Learn more.", error);
     }
 
     @Test
     public void signUpReservedUsernameTest(){
         SignUpPage sp = signUpPage.typeUserName("username");
         String error = sp.getUsernameErrorText();
-        Assert.assertEquals("Username is a reserved word", error);
+        Assert.assertEquals("Username 'username' is unavailable.", error);
     }
 
     @Test

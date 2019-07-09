@@ -17,7 +17,7 @@ public class SignUpPage {
     private By mainError = By.xpath("//*[@id=\"signup-form\"]/div[1]");
     private By userNameError = By.xpath("//input[@id='user_login']/ancestor::dd/following-sibling::dd");
     private By emailError = By.xpath(".//*[@id='user_email']/ancestor::dd/following-sibling::dd");
-    private By passwordError = By.xpath(".//*[@id='user_password']/ancestor::dd/following-sibling::dd");
+    private By passwordError = By.xpath("//*[@id=\"signup-form\"]/password-strength/p");
 
     public SignUpPage typeUserName(String username) {
         driver.findElement(userNameField).sendKeys(username);
@@ -47,6 +47,7 @@ public class SignUpPage {
     }
 
     public String getMainErrorText(){
+
         return driver.findElement(mainError).getText();
     }
 
