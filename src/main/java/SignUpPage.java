@@ -17,6 +17,7 @@ public class SignUpPage {
     private By mainError = By.xpath("//*[@id=\"signup-form\"]/div[1]");
     private By userNameError = By.xpath("//input[@id='user_login']/ancestor::dd/following-sibling::dd");
     private By emailError = By.xpath(".//*[@id='user_email']/ancestor::dd/following-sibling::dd");
+    private By userNameErrorTooltip = By.xpath("//*[@id=\"description_14ac72874f77\"]");
     private By passwordError = By.xpath("//*[@id=\"signup-form\"]/password-strength/p");
 
     public SignUpPage typeUserName(String username) {
@@ -64,6 +65,11 @@ public class SignUpPage {
     public String getEmailErrorText(){
 
         return driver.findElement(emailError).getText();
+    }
+
+    public String getUserNameErrorTooltipText() {
+
+        return driver.findElement(userNameErrorTooltip).getText();
     }
 
 }

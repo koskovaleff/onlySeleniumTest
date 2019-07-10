@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class SignUpPageTest {
     private WebDriver driver;
     private SignUpPage signUpPage;
+    private MainPage mainPage;
 
     @Before
     public void setUp(){
@@ -18,7 +19,9 @@ public class SignUpPageTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://github.com/join");
+
         signUpPage = new SignUpPage(driver);
+        mainPage = new MainPage(driver);
     }
 
     @Test
@@ -30,14 +33,17 @@ public class SignUpPageTest {
 
     @Test
     public void signUpReservedUsernameTest(){
-        SignUpPage sp = signUpPage.typeUserName("username");
-        String error = sp.getUsernameErrorText();
-        Assert.assertEquals("Username 'username' is unavailable.", error);
+        driver.get("https://github.com");
+        SignUpPage signUpPage = mainPage.register("username", "testemailcoder@yahoo.com", "testpasscodernew");
+        mainPage.clickSignUpForGithubButton();
+        String error = signUpPage.getUsernameErrorText();
+        Assert.assertEquals("Username 'username' is unavailable", error);
     }
 
     @Test
     public void signUpTakenUsername(){
         SignUpPage sp = signUpPage.typeUserName("user");
+        mainPage.clickSignUpForGithubButton();
         String error = sp.getUsernameErrorText();
         Assert.assertEquals("Username is already taken", error);
     }
