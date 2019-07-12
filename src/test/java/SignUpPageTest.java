@@ -42,9 +42,10 @@ public class SignUpPageTest {
 
     @Test
     public void signUpTakenUsername(){
-        SignUpPage sp = signUpPage.typeUserName("user");
+        driver.get("https://github.com");
+        SignUpPage signUpPage = mainPage.register("user", "testemailcoder@yahoo.com", "testpasscodernew");
         mainPage.clickSignUpForGithubButton();
-        String error = sp.getUsernameErrorText();
+        String error = signUpPage.getUsernameErrorText();
         Assert.assertEquals("Username is already taken", error);
     }
 

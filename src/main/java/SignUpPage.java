@@ -67,9 +67,4 @@ public class SignUpPage {
         return driver.findElement(emailError).getText();
     }
 
-    public String getUserNameErrorTooltipText() {
-
-        return driver.findElement(userNameErrorTooltip).getText();
-    }
-
 }
