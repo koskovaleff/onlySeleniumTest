@@ -55,6 +55,15 @@ public class SignUpPageTest {
         Assert.assertEquals("Join GitHub", heading);
     }
 
+    @Test
+    public void signUpwithInvalidEmail() {
+        driver.get("https://github.com");
+        SignUpPage signUpPage = mainPage.register("user", "testemailc", "testpasscodernew");
+        mainPage.clickSignUpForGithubButton();
+        String error = signUpPage.getEmailErrorText();
+        Assert.assertEquals("Email is invalid or already taken", error);
+    }
+
     @After
     public void tearDown(){
         driver.quit();

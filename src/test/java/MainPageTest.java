@@ -11,6 +11,7 @@ public class MainPageTest {
 
     private WebDriver driver;
     private MainPage mainPage;
+    private SignUpPage signUpPage;
 
     @Before
     public void setUp() {
@@ -22,6 +23,7 @@ public class MainPageTest {
         driver.get("https://github.com/");
 
         mainPage = new MainPage(driver);
+        signUpPage = new SignUpPage(driver);
     }
 
     @Test
@@ -52,6 +54,13 @@ public class MainPageTest {
         SignUpPage signUpPage = mainPage.register("testusernewcoder", "qweq", "testpasscodernew");
         String error = mainPage.getIncorrectEmailError();
         Assert.assertEquals("Email is invalid or already taken", error);
+    }
+
+    @Test
+    public void signUpButtonTest() {
+        mainPage.clickSignUpButton();
+        String heading = signUpPage.getHeadingText();
+        Assert.assertEquals("Join GitHub", heading);
     }
 
     @After
