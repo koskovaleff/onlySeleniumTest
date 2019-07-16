@@ -15,6 +15,8 @@ public class MainPage {
     private By userPasswordField = By.xpath("//*[@id=\"user[password]\"]");
     private By signUpForGithubButton = By.xpath("/html/body/div[4]/main/div[1]/div/div/div[2]/div/form/button");
     private By incorrectUserEmail = By.xpath("/html/body/div[4]/main/div[1]/div/div/div[2]/div/form/dl[2]/dd[2]");
+    private By enterpricePageLink = By.xpath("/html/body/div[1]/header/div/div[2]/nav/ul/li[2]/a");
+    private By marketplacePageLink = By.xpath("/html/body/div[1]/header/div/div[2]/nav/ul/li[4]/a");
 
     public LoginPage clickSignInLink () {
         driver.findElement(signInLink).click();
@@ -55,6 +57,16 @@ public class MainPage {
 
     public String getIncorrectEmailError () {
         return driver.findElement(incorrectUserEmail).getText();
+    }
+
+    public EnterpricePage clickEnterpriceLink () {
+        driver.findElement(enterpricePageLink).click();
+        return new EnterpricePage(driver);
+    }
+
+    public MarketplacePage clickMarketplaceLink () {
+        driver.findElement(marketplacePageLink).click();
+        return new MarketplacePage(driver);
     }
 
 }
